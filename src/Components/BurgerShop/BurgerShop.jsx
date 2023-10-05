@@ -1,19 +1,33 @@
 import '../../styles/burger.css'
 
 import { ingredients } from '../../data/burger-data'
+import  IngredientList  from './IngredientList'
+import  BurgerStack  from './BurgerStack'
+import { useState, useEffect } from'react'
 
 const BurgerShop = () => {
-  console.log(ingredients)
-  
+  const [stack, setStack] = useState([])
+
+  const addIngredientHandler = (item) => {
+    setStack([...stack, item])
+  }
+
+  const removeIngredientHandler = (idx) => {
+    setStack(stack.filter((el, i) => i !== idx))
+  }
+
+  const clearOrderHandler = () => {
+    setStack([])
+  }
   return (
     <div className="burger-shop">
       <nav>
         <h1>Burger Shop</h1>
-        <button>Clear Order</button>
+        <button onClick={clearOrderHandler}>Clear Order</button>
       </nav>
       <section>
-        IngredientList component here
-        BurgerStack component here
+        <IngredientList ingredients={ingredients} addIngredientHandler={addIngredientHandler}/>
+        <BurgerStack stack={stack} removeIngredientHandler={removeIngredientHandler}/>
       </section>
     </div>
   )
