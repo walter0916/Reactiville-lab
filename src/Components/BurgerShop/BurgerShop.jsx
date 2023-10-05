@@ -26,7 +26,7 @@ const BurgerShop = () => {
         <button onClick={clearOrderHandler}>Clear Order</button>
       </nav>
       <section>
-        <IngredientList ingredients={ingredients} addIngredientHandler={addIngredientHandler}/>
+        <IngredientList ingredients={ingredients} stack={stack}  addIngredientHandler={addIngredientHandler}/>
         <BurgerStack stack={stack} removeIngredientHandler={removeIngredientHandler}/>
       </section>
     </div>
